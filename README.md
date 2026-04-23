@@ -30,7 +30,7 @@ A unified platform where a small business owner can manage contacts, track deals
 
 ## 🎨 Design
 
-Figma Design: [View Prototype →](<YOUR_FIGMA_LINK_HERE>)
+Figma Design: [View Prototype →](https://www.figma.com/design/tR0qixfQ9u8WHDckQgoRka/Design-for-the-Full-Stack-Project?node-id=0-1&t=AoAaN7P7yyHjpXdc-1)
 
 ---
 
