@@ -16,6 +16,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: url('https://res.cloudinary.com/dwpjwccxd/image/upload/w_48,h_48,c_scale/v1777029177/smallbiz_cursor_obutfe.png') 24 24, auto;
+  }
+  
+  a, button, [role="button"], input, select, textarea {
+    cursor: url('https://res.cloudinary.com/dwpjwccxd/image/upload/w_48,h_48,c_scale/v1777029177/smallbiz_cursor_obutfe.png') 24 24, pointer;
   }
 }
 
