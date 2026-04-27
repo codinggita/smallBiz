@@ -12,19 +12,6 @@ const SubHeroSection = () => {
   return (
     <div className="bg-light py-20">
       <div className="container mx-auto px-6">
-        {/* Demo Video Section */}
-        <div className="mb-24">
-          <div className="max-w-4xl mx-auto bg-dark rounded-[32px] overflow-hidden shadow-2xl aspect-video flex items-center justify-center relative group cursor-pointer">
-            <div className="text-center z-10">
-              <div className="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center text-3xl mb-4 mx-auto shadow-lg shadow-primary/50 group-hover:scale-110 transition-transform pl-1">
-                <FaPlay />
-              </div>
-              <p className="text-light font-bold text-xl">Watch 30-second demo</p>
-            </div>
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent"></div>
-          </div>
-        </div>
 
         {/* How It Works Steps */}
         <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
@@ -13,9 +14,9 @@ const HeroSection = () => {
             Manage orders, sync inventory, and talk to customers without ever leaving your favorite chat app. Simple tools for the 3-person team.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-start">
-            <button className="bg-primary text-light px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/30 hover:bg-dark transition-all hover:-translate-y-1">
+            <Link to="/signup" className="inline-block text-center bg-primary text-light px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/30 hover:bg-dark transition-all hover:-translate-y-1">
               Start free
-            </button>
+            </Link>
             <button className="bg-white text-dark border-2 border-muted px-8 py-4 rounded-full font-bold text-lg hover:border-primary hover:text-primary transition-all">
               How it works
             </button>

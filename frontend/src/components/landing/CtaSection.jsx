@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CtaSection = () => {
   return (
@@ -10,9 +11,9 @@ const CtaSection = () => {
         <p className="text-xl text-light/80 max-w-2xl mx-auto mb-10">
           Join thousands of small business owners who are running their entire operation from WhatsApp.
         </p>
-        <button className="bg-white text-dark px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
+        <Link to="/signup" className="inline-block bg-white text-dark px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition-transform">
           Start your free account
-        </button>
+        </Link>
       </div>
     </section>
   );
