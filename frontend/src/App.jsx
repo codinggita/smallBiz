@@ -7,6 +7,9 @@ import OnboardingPage from './pages/OnboardingPage';
 import DashboardPage from './pages/DashboardPage';
 import ContactsPage from './pages/ContactsPage';
 import ContactDetailPage from './pages/ContactDetailPage';
+import DealsPage from './pages/DealsPage';
+import InvoicesPage from './pages/InvoicesPage';
+import WhatsAppPage from './pages/WhatsAppPage';
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/contacts/:id" element={<ContactDetailPage />} />
+        <Route path="/deals" element={<DealsPage />} />
+        <Route path="/invoices" element={<InvoicesPage />} />
+        <Route path="/whatsapp" element={<WhatsAppPage />} />
       </Routes>
     </Router>
   );
