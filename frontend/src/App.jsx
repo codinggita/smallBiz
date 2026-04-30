@@ -11,6 +11,8 @@ import DealsPage from './pages/DealsPage';
 import InvoicesPage from './pages/InvoicesPage';
 import WhatsAppPage from './pages/WhatsAppPage';
 import ReportsPage from './pages/ReportsPage';
+import SettingsPage from './pages/SettingsPage';
+import IntegrationsPage from './pages/IntegrationsPage';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/invoices" element={<InvoicesPage />} />
         <Route path="/whatsapp" element={<WhatsAppPage />} />
         <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/integrations" element={<IntegrationsPage />} />
       </Routes>
     </Router>
   );
