@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWhatsapp } from 'react-icons/fa';
 import { authService } from '../services/authService';
+import { Storage } from '../utils/storage';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,7 +27,14 @@ const LoginPage = () => {
       setErrorMsg('');
       try {
         const data = await authService.login(values.email, values.password);
-        localStorage.setItem('token', data.token);
+        
+        // Save token depending on Remember Me
+        if (values.rememberMe) {
+          Storage.setLocal('TOKEN', data.token);
+        } else {
+          Storage.setSession('TOKEN', data.token);
+        }
+        
         navigate('/dashboard');
       } catch (error) {
         setErrorMsg(error.message || 'Failed to login');

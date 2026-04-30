@@ -12,9 +12,10 @@ import ImportExportSettings from '../components/settings/ImportExportSettings';
 import PrivacySecuritySettings from '../components/settings/PrivacySecuritySettings';
 import WhatsAppTemplatesSettings from '../components/settings/WhatsAppTemplatesSettings';
 import { FiSearch } from 'react-icons/fi';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const SettingsPage = () => {
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useLocalStorage('SETTINGS_TAB', 'profile');
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigationSections = [
