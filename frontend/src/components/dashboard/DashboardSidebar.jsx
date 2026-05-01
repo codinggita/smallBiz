@@ -22,11 +22,13 @@ const DashboardSidebar = () => {
   return (
     <div className="w-[240px] flex-shrink-0 bg-[#112D4E] min-h-screen flex flex-col fixed left-0 top-0 bottom-0 z-10">
       <div className="px-6 py-5 flex items-center">
-        <img 
-          src="https://res.cloudinary.com/dwpjwccxd/image/upload/v1777029177/smallbiz_cursor_obutfe.png" 
-          alt="SmallBiz Logo" 
-          className="h-16 w-auto object-contain scale-125 origin-left"
-        />
+        <Link to="/">
+          <img 
+            src="https://res.cloudinary.com/dwpjwccxd/image/upload/v1777029177/smallbiz_cursor_obutfe.png" 
+            alt="SmallBiz Logo" 
+            className="h-16 w-auto object-contain scale-125 origin-left cursor-pointer"
+          />
+        </Link>
       </div>
 
       <div className="flex-1 px-4 py-6 overflow-y-auto">
