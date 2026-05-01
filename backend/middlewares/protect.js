@@ -10,6 +10,9 @@ const protect = async (req, res, next) => {
     }
 
     const token = authHeader.split(' ')[1];
+    
+    // Debug log for Render logs
+    console.log(`[Auth] Verifying token: ${token.substring(0, 5)}...`);
 
     const user = await User.findOne({ authToken: token });
     if (!user) {

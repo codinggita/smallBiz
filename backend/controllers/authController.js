@@ -94,8 +94,12 @@ const logoutUser = async (req, res) => {
 // GET /api/auth/me  (protected)
 // ─────────────────────────────────────────────
 const getMe = async (req, res) => {
-  // req.user is already populated by protect middleware
-  res.status(200).json(safeUser(req.user));
+  try {
+    // req.user is already populated by protect middleware
+    res.status(200).json(safeUser(req.user));
+  } catch (err) {
+    res.status(500).json({ message: 'Server error fetching user profile.', error: err.message });
+  }
 };
 
 // ─────────────────────────────────────────────
