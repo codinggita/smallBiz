@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import { 
   FiSearch, FiFilter, FiPlus, FiList, FiGrid, FiChevronDown, 
   FiMessageCircle, FiEdit2, FiMoreVertical, FiChevronLeft, FiChevronRight,
@@ -45,10 +45,8 @@ const ContactsPage = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen bg-[#F9FAFB] font-sans text-gray-800">
-      <DashboardSidebar />
-      
-      <div className="ml-[240px] flex-1 flex flex-col min-h-screen relative">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col relative w-full">
         
         {/* Main Content Area */}
         <div className="flex-1 p-8">
@@ -391,7 +389,7 @@ const ContactsPage = () => {
         )}
 
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

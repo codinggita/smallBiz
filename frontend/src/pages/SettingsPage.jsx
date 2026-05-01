@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import ProfileSettings from '../components/settings/ProfileSettings';
 import BusinessInfoSettings from '../components/settings/BusinessInfoSettings';
 import TeamMembersSettings from '../components/settings/TeamMembersSettings';
@@ -65,12 +65,11 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen bg-[#F9F7F7]">
-      {/* Main Sidebar */}
-      <DashboardSidebar />
-      
-      {/* Settings Sub-Navigation */}
-      <div className="w-[220px] flex-shrink-0 bg-white border-r-[0.5px] border-[#DBE2EF] min-h-screen fixed left-[240px] top-0 bottom-0 z-10 hidden lg:flex flex-col">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col lg:flex-row min-h-0 w-full relative">
+        
+        {/* Settings Sub-Navigation */}
+        <div className="w-full lg:w-[220px] flex-shrink-0 bg-white border-b lg:border-r-[0.5px] border-[#DBE2EF] lg:min-h-screen flex flex-col">
         <div className="px-4 py-5 pb-3">
           <h1 className="text-[#112D4E] text-[16px] font-medium mb-4 px-2">Settings</h1>
           <div className="relative">
@@ -111,11 +110,12 @@ const SettingsPage = () => {
         </div>
       </div>
 
-      {/* Settings Content Area */}
-      <div className="flex-1 lg:ml-[460px] ml-[240px] p-8 lg:p-12 overflow-y-auto">
-        {renderContent()}
+        {/* Settings Content Area */}
+        <div className="flex-1 p-4 md:p-8 lg:p-12 overflow-y-auto">
+          {renderContent()}
+        </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

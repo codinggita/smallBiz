@@ -1,15 +1,16 @@
 import React from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
 import DashboardMain from '../components/dashboard/DashboardMain';
 import QuickActionPanel from '../components/dashboard/QuickActionPanel';
+import DashboardLayout from '../layouts/DashboardLayout';
 
 const DashboardPage = () => {
   return (
-    <div className="flex w-full min-h-screen bg-[#F9FAFB]">
-      <DashboardSidebar />
-      <DashboardMain />
-      <QuickActionPanel />
-    </div>
+    <DashboardLayout>
+      <div className="flex flex-col xl:flex-row flex-1 relative">
+        <DashboardMain />
+        <QuickActionPanel />
+      </div>
+    </DashboardLayout>
   );
 };
 

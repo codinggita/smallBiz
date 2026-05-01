@@ -3,7 +3,7 @@ import { FiUserPlus, FiFileText, FiPhoneCall, FiMessageCircle, FiTrendingUp } fr
 
 const QuickActionPanel = () => {
   return (
-    <div className="w-[280px] flex-shrink-0 bg-white min-h-screen border-l border-gray-200 flex flex-col fixed right-0 top-0 bottom-0 z-10">
+    <div className="hidden xl:flex w-[280px] flex-shrink-0 bg-white min-h-screen border-l border-gray-200 flex-col fixed right-0 top-0 bottom-0 z-10">
       <div className="p-6 flex-1 overflow-y-auto">
         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Quick Actions</h3>
         

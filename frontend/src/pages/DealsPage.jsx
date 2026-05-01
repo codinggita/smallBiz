@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import { useDebounce } from '../hooks/useDebounce';
 import { useModal } from '../hooks/useModal';
 import {
@@ -266,10 +266,8 @@ const DealsPage = () => {
   };
 
   return (
-    <div className="flex h-screen bg-[#F9F7F7] overflow-hidden">
-      <DashboardSidebar />
-
-      <div className="flex-1 ml-[240px] flex flex-col min-h-0 relative">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col min-h-0 relative w-full">
         {/* Top Header */}
         <div className="bg-white border-b border-slate-200 px-6 lg:px-8 py-5 flex-shrink-0 z-20">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-5">
@@ -397,7 +395,7 @@ const DealsPage = () => {
           </div>
         )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fi';
 import { Storage } from '../../utils/storage';
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({ onCloseMobile }) => {
   const location = useLocation();
   const user = Storage.getLocal('USER') || Storage.getSession('USER') || {};
 
@@ -22,7 +22,7 @@ const DashboardSidebar = () => {
   ];
 
   return (
-    <div className="w-[240px] flex-shrink-0 bg-[#112D4E] min-h-screen flex flex-col fixed left-0 top-0 bottom-0 z-10">
+    <div className="w-[240px] flex-shrink-0 bg-[#112D4E] h-full flex flex-col">
       <div className="px-6 py-5 flex items-center">
         <Link to="/">
           <img 
@@ -41,6 +41,7 @@ const DashboardSidebar = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={onCloseMobile}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-sm font-medium ${
                   isActive 
                     ? 'bg-[#3F72AF] text-white' 
