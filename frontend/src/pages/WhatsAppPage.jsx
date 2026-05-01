@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import {
   FiSearch, FiMoreVertical, FiSend, FiPaperclip, FiFileText,
   FiTag, FiUser, FiBriefcase, FiClock, FiPlus, FiChevronRight,
@@ -66,13 +66,11 @@ const WhatsAppPage = () => {
   const thread = msgs[activeConv.id] || [];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#F9F7F7]">
-      <DashboardSidebar />
-
-      <div className="flex-1 ml-[240px] flex min-h-0 overflow-hidden">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden w-full relative">
 
         {/* ── Panel 1: Conversation List ── */}
-        <div className="w-[320px] flex-shrink-0 bg-white border-r border-[#DBE2EF] flex flex-col">
+        <div className="w-full md:w-[320px] flex-shrink-0 bg-white border-r border-[#DBE2EF] flex flex-col">
           {/* Header */}
           <div className="px-4 pt-4 pb-3 flex-shrink-0">
             <div className="flex items-center justify-between mb-3">
@@ -129,7 +127,7 @@ const WhatsAppPage = () => {
         </div>
 
         {/* ── Panel 2: Message Thread ── */}
-        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <div className="hidden md:flex flex-1 flex-col min-w-0 overflow-hidden">
           {/* Thread Top Bar */}
           <div className="h-[60px] bg-white border-b border-[#DBE2EF] px-5 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-3">
@@ -235,7 +233,7 @@ const WhatsAppPage = () => {
 
         {/* ── Panel 3: Contact Context ── */}
         {rightPanel && (
-          <div className="w-[300px] flex-shrink-0 bg-white border-l border-[#DBE2EF] flex flex-col overflow-hidden">
+          <div className="hidden xl:flex w-[300px] flex-shrink-0 bg-white border-l border-[#DBE2EF] flex-col overflow-hidden">
             <div className="px-5 py-4 border-b border-[#DBE2EF] flex justify-between items-center flex-shrink-0">
               <span className="text-[14px] font-bold text-[#112D4E]">Contact info</span>
               <button onClick={() => setRightPanel(false)} className="p-1 hover:bg-slate-100 rounded-full text-slate-400"><FiX className="w-4 h-4" /></button>
@@ -335,7 +333,7 @@ const WhatsAppPage = () => {
           </div>
         )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

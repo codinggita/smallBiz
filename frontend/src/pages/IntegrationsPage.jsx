@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import { FiSearch, FiSettings, FiRefreshCw, FiPause, FiArrowLeft, FiAlertCircle, FiCheckCircle, FiMoreVertical, FiArrowRight, FiSliders } from 'react-icons/fi';
 
 // Mock Data
@@ -529,14 +529,13 @@ const IntegrationsPage = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen bg-[#F9F7F7]">
-      <DashboardSidebar />
-      <div className="flex-1 lg:ml-[240px] ml-0 overflow-y-auto">
+    <DashboardLayout>
+      <div className="flex-1 w-full overflow-y-auto">
          {currentView === 'hub' && <IntegrationsHub onSelectConnector={handleSelectConnector} onViewMonitor={() => setCurrentView('monitor')} />}
          {currentView === 'detail' && <ConnectorDetail connector={selectedConnector} onBack={() => setCurrentView('hub')} onViewMonitor={() => setCurrentView('monitor')} />}
          {currentView === 'monitor' && <SyncMonitor onBack={() => setCurrentView('hub')} />}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

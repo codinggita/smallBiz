@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import { 
   FiCalendar, FiDownload, FiChevronDown, FiTrendingUp, FiTrendingDown, 
   FiDollarSign, FiBriefcase, FiUsers, FiMessageSquare, FiPieChart, FiLink,
@@ -17,10 +17,8 @@ const ReportsPage = () => {
   const [showExportMenu, setShowExportMenu] = useState(false);
 
   return (
-    <div className="flex h-screen bg-[#F9F7F7] overflow-hidden">
-      <DashboardSidebar />
-      
-      <div className="flex-1 ml-[240px] flex flex-col min-h-0 overflow-hidden">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden w-full relative">
         {/* Top Bar */}
         <div className="bg-white border-b border-slate-200 px-6 lg:px-8 py-5 flex-shrink-0 z-20">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-5">
@@ -100,7 +98,7 @@ const ReportsPage = () => {
           {activeTab === 'Team' && <TeamTab compareMode={compareMode} />}
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

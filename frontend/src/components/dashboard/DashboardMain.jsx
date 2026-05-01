@@ -6,15 +6,15 @@ import {
 
 const DashboardMain = () => {
   return (
-    <div className="flex-1 bg-[#F9FAFB] min-h-screen p-8 ml-[240px] mr-[280px]">
+    <div className="flex-1 bg-[#F9FAFB] min-h-screen p-4 md:p-8 xl:mr-[280px]">
       
       {/* Section 1 - Top bar */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-[#112D4E]">Dashboard</h1>
           <p className="text-[#3F72AF] text-sm font-medium mt-1">Good morning, Ravi 👋</p>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
           <div className="relative">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input 
@@ -31,7 +31,7 @@ const DashboardMain = () => {
       </div>
 
       {/* Section 2 - KPI Metric Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         {/* Card 1 */}
         <div className="bg-white p-5 rounded-xl border-l-4 border-[#3F72AF] shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
           <div className="flex justify-between items-start mb-2">
@@ -76,9 +76,9 @@ const DashboardMain = () => {
       </div>
 
       {/* Section 3 - Two-column middle section */}
-      <div className="flex gap-6 mb-8">
+      <div className="flex flex-col lg:flex-row gap-6 mb-8">
         {/* Left panel - Activity Feed (65%) */}
-        <div className="w-[65%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
+        <div className="w-full lg:w-[65%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
           <div className="p-5 border-b border-gray-100 flex items-center justify-between">
             <h2 className="font-bold text-gray-900">Activity Feed</h2>
             <div className="flex bg-gray-100 p-1 rounded-lg">
@@ -125,7 +125,7 @@ const DashboardMain = () => {
         </div>
 
         {/* Right panel - Upcoming Follow-ups (35%) */}
-        <div className="w-[35%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
+        <div className="w-full lg:w-[35%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
           <div className="p-5 border-b border-gray-100 flex items-center justify-between">
             <h2 className="font-bold text-gray-900 flex items-center gap-2">
               <FiClock className="text-[#3F72AF]" /> Follow-ups
@@ -220,9 +220,9 @@ const DashboardMain = () => {
       </div>
 
       {/* Section 5 - Bottom row */}
-      <div className="flex gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* Left - Recent Invoices (60%) */}
-        <div className="w-[60%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
+        <div className="w-full lg:w-[60%] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
           <div className="p-5 border-b border-gray-100 flex items-center justify-between">
             <h2 className="font-bold text-gray-900">Recent Invoices</h2>
             <button className="text-gray-400 hover:text-gray-600"><FiMoreHorizontal /></button>
@@ -277,7 +277,7 @@ const DashboardMain = () => {
         </div>
 
         {/* Right - Integration Sync Status (40%) */}
-        <div className="w-[40%] bg-white rounded-xl shadow-sm border border-gray-100">
+        <div className="w-full lg:w-[40%] bg-white rounded-xl shadow-sm border border-gray-100">
           <div className="p-5 border-b border-gray-100">
             <h2 className="font-bold text-gray-900">Integration Sync</h2>
           </div>

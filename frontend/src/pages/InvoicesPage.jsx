@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import {
   FiSearch, FiFilter, FiPlus, FiEye, FiDownload, FiSend,
   FiMoreVertical, FiX, FiArrowLeft, FiCheck, FiClock,
@@ -51,13 +51,11 @@ const InvoicesPage = () => {
   const isOverdue = (inv) => inv.status !== 'Paid' && new Date(inv.due) < new Date();
 
   return (
-    <div className="flex h-screen bg-[#F9F7F7] overflow-hidden">
-      <DashboardSidebar />
-
-      <div className="flex-1 ml-[240px] flex flex-col min-h-0 overflow-hidden">
+    <DashboardLayout>
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden w-full relative">
         {/* Top Bar */}
-        <div className="bg-white border-b border-slate-200 px-8 py-5 flex-shrink-0">
-          <div className="flex justify-between items-center mb-5">
+        <div className="bg-white border-b border-slate-200 px-4 md:px-8 py-5 flex-shrink-0">
+          <div className="flex flex-col md:flex-row justify-between md:items-center mb-5 gap-4">
             <div className="flex items-center gap-3">
               <h1 className="text-[22px] font-bold text-[#112D4E]">Invoices</h1>
               <span className="text-[12px] font-bold text-[#3F72AF] bg-blue-50 px-3 py-1 rounded-full border border-blue-100">{fmt(385000)} billed this month</span>
@@ -77,7 +75,7 @@ const InvoicesPage = () => {
           </div>
 
           {/* Summary Cards */}
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {summaryCards.map((c, i) => (
               <div key={i} className={`bg-white border border-slate-200 rounded-xl p-4 shadow-sm ${c.accent ? 'border-l-4 border-l-[#112D4E]' : ''}`}>
                 <p className="text-[11px] font-bold text-[#3F72AF] uppercase tracking-wider mb-2">{c.label}</p>
@@ -89,10 +87,10 @@ const InvoicesPage = () => {
         </div>
 
         {/* Status Filter Pills */}
-        <div className="px-8 py-4 bg-white border-b border-slate-100 flex gap-2 flex-shrink-0">
+        <div className="px-4 md:px-8 py-4 bg-white border-b border-slate-100 flex gap-2 flex-shrink-0 overflow-x-auto">
           {['All', 'Draft', 'Sent', 'Paid', 'Overdue'].map(s => (
             <button key={s} onClick={() => setStatusFilter(s)}
-              className={`px-4 py-1.5 rounded-full text-[13px] font-bold transition-colors ${statusFilter === s ? 'bg-[#112D4E] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}>
+              className={`px-4 py-1.5 rounded-full text-[13px] font-bold transition-colors whitespace-nowrap ${statusFilter === s ? 'bg-[#112D4E] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}>
               {s}
             </button>
           ))}
@@ -184,7 +182,7 @@ const InvoicesPage = () => {
 
           {/* Detail Panel */}
           {selected && (
-            <div className="w-[400px] flex-shrink-0 bg-white border-l border-slate-200 flex flex-col overflow-hidden">
+            <div className="w-full md:w-[400px] flex-shrink-0 bg-white border-l border-slate-200 flex flex-col overflow-hidden absolute md:relative inset-y-0 right-0 z-20 shadow-2xl md:shadow-none">
               {/* Panel Header */}
               <div className="px-6 py-5 border-b border-slate-100 flex items-start justify-between flex-shrink-0">
                 <div>
@@ -343,7 +341,7 @@ const InvoicesPage = () => {
           </div>
         </div>
       )}
-    </div>
+    </DashboardLayout>
   );
 };
 

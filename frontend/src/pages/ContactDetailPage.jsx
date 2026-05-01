@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import DashboardSidebar from '../components/dashboard/DashboardSidebar';
+import DashboardLayout from '../layouts/DashboardLayout';
 import { 
   FiArrowLeft, FiMessageCircle, FiBriefcase, FiMoreHorizontal, 
   FiEdit2, FiPlus, FiPhoneCall, FiMail, FiFileText, FiCalendar,
@@ -33,10 +33,8 @@ const ContactDetailPage = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen bg-[#F9FAFB] font-sans text-gray-800">
-      <DashboardSidebar />
-      
-      <div className="ml-[240px] flex-1 p-8">
+    <DashboardLayout>
+      <div className="flex-1 p-4 md:p-8 w-full">
         {/* Top Navigation */}
         <button 
           onClick={() => navigate('/contacts')}
@@ -45,10 +43,10 @@ const ContactDetailPage = () => {
           <FiArrowLeft /> Back to Contacts
         </button>
 
-        <div className="flex gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           {/* Left Column - Contact Profile (35%) */}
-          <div className="w-[35%] flex flex-col gap-6 sticky top-8">
+          <div className="w-full lg:w-[35%] flex flex-col gap-6 lg:sticky lg:top-8">
             
             {/* Header Section */}
             <div className="bg-white rounded-xl shadow-sm border border-[#DBE2EF] p-6 text-center relative">
@@ -150,7 +148,7 @@ const ContactDetailPage = () => {
           </div>
 
           {/* Right Column - Activity Timeline (65%) */}
-          <div className="w-[65%] flex flex-col gap-6">
+          <div className="w-full lg:w-[65%] flex flex-col gap-6">
             
             {/* Add Activity Bar */}
             <div className="bg-white rounded-xl shadow-sm border border-[#DBE2EF] p-2 flex">
@@ -289,7 +287,7 @@ const ContactDetailPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
