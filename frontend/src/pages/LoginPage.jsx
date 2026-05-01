@@ -31,8 +31,10 @@ const LoginPage = () => {
         // Save token depending on Remember Me
         if (values.rememberMe) {
           Storage.setLocal('TOKEN', data.token);
+          Storage.setLocal('USER', data.user);
         } else {
           Storage.setSession('TOKEN', data.token);
+          Storage.setSession('USER', data.user);
         }
         
         navigate('/dashboard');

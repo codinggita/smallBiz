@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import { Storage } from '../../utils/storage';
 
 const ProfileSettings = () => {
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const user = Storage.getLocal('USER') || Storage.getSession('USER') || {};
+
+  // Extract first and last name from full name
+  const nameParts = (user.name || '').split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+  const initials = user.name ? user.name.charAt(0).toUpperCase() : 'U';
 
   return (
     <div className="max-w-3xl">
@@ -18,7 +26,7 @@ const ProfileSettings = () => {
       {/* Profile Photo */}
       <div className="flex flex-col items-center mb-10">
         <div className="w-[88px] h-[88px] rounded-full bg-[#3F72AF] flex items-center justify-center text-white text-2xl font-medium mb-3">
-          RK
+          {initials}
         </div>
         <div className="flex gap-4">
           <button className="text-[#3F72AF] text-[13px] hover:underline">Change photo</button>
@@ -30,15 +38,15 @@ const ProfileSettings = () => {
       <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-8">
         <div>
           <label className="block text-[#3F72AF] text-[12px] font-medium mb-1.5">First name</label>
-          <input type="text" defaultValue="Ravi" className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
+          <input type="text" defaultValue={firstName} className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
         </div>
         <div>
           <label className="block text-[#3F72AF] text-[12px] font-medium mb-1.5">Last name</label>
-          <input type="text" defaultValue="Kumar" className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
+          <input type="text" defaultValue={lastName} className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
         </div>
         <div className="col-span-2">
           <label className="block text-[#3F72AF] text-[12px] font-medium mb-1.5">Email address</label>
-          <input type="email" defaultValue="ravi@rajantextiles.com" className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
+          <input type="email" defaultValue={user.email} className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" disabled />
           <p className="text-[#3F72AF] text-[12px] mt-1">Changing your email requires verification</p>
         </div>
         <div>
@@ -52,7 +60,7 @@ const ProfileSettings = () => {
         </div>
         <div>
           <label className="block text-[#3F72AF] text-[12px] font-medium mb-1.5">Job title</label>
-          <input type="text" defaultValue="Owner" className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
+          <input type="text" defaultValue={user.role || 'Owner'} className="w-full h-10 px-3 border-[0.5px] border-[#DBE2EF] rounded-lg text-[#112D4E] text-[14px] focus:outline-none focus:border-[1.5px] focus:border-[#3F72AF]" />
         </div>
         <div>
           <label className="block text-[#3F72AF] text-[12px] font-medium mb-1.5">Time zone</label>

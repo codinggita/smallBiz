@@ -4,9 +4,11 @@ import {
   FiHome, FiUsers, FiBriefcase, FiFileText, 
   FiMessageSquare, FiSettings, FiPieChart, FiLink 
 } from 'react-icons/fi';
+import { Storage } from '../../utils/storage';
 
 const DashboardSidebar = () => {
   const location = useLocation();
+  const user = Storage.getLocal('USER') || Storage.getSession('USER') || {};
 
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: <FiHome className="w-5 h-5" /> },
@@ -55,12 +57,12 @@ const DashboardSidebar = () => {
 
       <div className="p-4 border-t border-white/10">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden flex-shrink-0">
-            <img src="https://i.pravatar.cc/150?u=ravi" alt="Ravi" className="w-full h-full object-cover" />
+          <div className="w-10 h-10 rounded-full bg-[#3F72AF] text-white flex items-center justify-center font-bold overflow-hidden flex-shrink-0">
+            {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-white truncate">Ravi Kumar</p>
-            <p className="text-xs text-[#DBE2EF] truncate">Rajan Textiles</p>
+            <p className="text-sm font-medium text-white truncate">{user.name || 'User'}</p>
+            <p className="text-xs text-[#DBE2EF] truncate">{user.businessName || 'Business'}</p>
           </div>
         </div>
         <button className="w-full py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all">

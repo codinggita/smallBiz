@@ -1,5 +1,6 @@
 const KEYS = {
   TOKEN: 'crm_auth_token',
+  USER: 'crm_user',
   USER_PREFS: 'crm_user_prefs',
   DRAFT_INVOICE: 'crm_draft_invoice',
   SETTINGS_TAB: 'settings_active_tab'

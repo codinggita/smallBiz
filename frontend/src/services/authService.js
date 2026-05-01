@@ -1,39 +1,37 @@
 import { fetchClient } from '../utils/fetchClient';
 
 export const authService = {
+  // POST /api/auth/login
   login: async (email, password) => {
-    // REAL IMPLEMENTATION (Commented out until backend is ready):
-    // return fetchClient('/auth/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ email, password })
-    // });
-
-    // MOCK IMPLEMENTATION (To keep the UI working perfectly fine):
-    console.log('[Mock API] Calling POST /api/auth/login');
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (email && password) {
-          resolve({
-            token: 'mock-jwt-token-12345',
-            user: { id: 'u_1', name: 'Demo User', email }
-          });
-        } else {
-          reject(new Error('Invalid credentials'));
-        }
-      }, 800); // Simulate network delay
+    return fetchClient('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
     });
   },
 
+  // POST /api/auth/register
   register: async (userData) => {
-    console.log('[Mock API] Calling POST /api/auth/register', userData);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          message: 'User registered successfully',
-          token: 'mock-jwt-token-67890',
-          user: { id: 'u_2', ...userData }
-        });
-      }, 1000);
+    return fetchClient('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
     });
-  }
+  },
+
+  // POST /api/auth/logout
+  logout: async () => {
+    return fetchClient('/auth/logout', { method: 'POST' });
+  },
+
+  // GET /api/auth/me
+  getMe: async () => {
+    return fetchClient('/auth/me');
+  },
+
+  // POST /api/auth/onboarding
+  completeOnboarding: async (data) => {
+    return fetchClient('/auth/onboarding', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
 };

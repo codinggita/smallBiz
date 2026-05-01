@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { FcGoogle } from 'react-icons/fc';
 import { FaWhatsapp } from 'react-icons/fa';
+import { authService } from '../services/authService';
+import { Storage } from '../utils/storage';
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const formik = useFormik({
     initialValues: {
@@ -21,10 +25,20 @@ const SignupPage = () => {
       businessName: Yup.string().required('Required'),
       password: Yup.string().min(8, 'Must be at least 8 characters').required('Required'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
-      // After successful signup, redirect to onboarding wizard
-      navigate('/onboarding');
+    onSubmit: async (values) => {
+      setLoading(true);
+      setErrorMsg('');
+      try {
+        const data = await authService.register(values);
+        Storage.setLocal('TOKEN', data.token);
+        Storage.setLocal('USER', data.user);
+        // After successful signup, redirect to onboarding wizard
+        navigate('/onboarding');
+      } catch (error) {
+        setErrorMsg(error.message || 'Failed to sign up');
+      } finally {
+        setLoading(false);
+      }
     },
   });
 
@@ -45,6 +59,11 @@ const SignupPage = () => {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-gray-100">
           <form className="space-y-6" onSubmit={formik.handleSubmit}>
+            {errorMsg && (
+              <div className="bg-red-50 text-red-500 text-sm p-3 rounded-md border border-red-200">
+                {errorMsg}
+              </div>
+            )}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Full Name
@@ -138,9 +157,10 @@ const SignupPage = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                disabled={loading}
+                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${loading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors`}
               >
-                Sign up
+                {loading ? 'Signing up...' : 'Sign up'}
               </button>
             </div>
           </form>
