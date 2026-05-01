@@ -14,7 +14,10 @@ app.get('/', (req, res) => {
   res.json({ status: 'SmallBiz API is running ✅' });
 });
 
+const contactsRoutes = require('./routes/contacts');
+
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/contacts', contactsRoutes);
 
 module.exports = app;
