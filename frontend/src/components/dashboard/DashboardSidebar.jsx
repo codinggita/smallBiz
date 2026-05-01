@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   FiHome, FiUsers, FiBriefcase, FiFileText, 
-  FiMessageSquare, FiSettings, FiPieChart, FiLink 
+  FiMessageSquare, FiSettings, FiPieChart, FiLink, FiLogOut 
 } from 'react-icons/fi';
 import { Storage } from '../../utils/storage';
 
@@ -66,8 +66,18 @@ const DashboardSidebar = ({ onCloseMobile }) => {
             <p className="text-xs text-[#DBE2EF] truncate">{user.businessName || 'Business'}</p>
           </div>
         </div>
-        <button className="w-full py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all">
+        <button className="w-full py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all mb-3">
           Upgrade Plan
+        </button>
+        <button 
+          onClick={() => {
+            Storage.clearAll();
+            window.location.href = '/login';
+          }}
+          className="w-full flex items-center justify-center gap-2 py-2 text-[#DBE2EF] hover:text-white transition-colors text-xs font-bold uppercase tracking-wider border border-white/10 rounded-full hover:bg-white/5"
+        >
+          <FiLogOut className="w-4 h-4" />
+          Logout
         </button>
       </div>
     </div>

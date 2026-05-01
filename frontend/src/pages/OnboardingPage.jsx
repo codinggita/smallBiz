@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { FaCheckCircle } from 'react-icons/fa';
+import { authService } from '../services/authService';
 
 const OnboardingPage = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -19,9 +21,16 @@ const OnboardingPage = () => {
       teamSize: Yup.string().required('Please select your team size'),
       primaryGoal: Yup.string().required('Please select your primary goal'),
     }),
-    onSubmit: (values) => {
-      console.log('Onboarding Complete:', values);
-      navigate('/dashboard');
+    onSubmit: async (values) => {
+      setLoading(true);
+      try {
+        await authService.completeOnboarding(values);
+        navigate('/dashboard');
+      } catch (error) {
+        console.error('Onboarding failed:', error);
+      } finally {
+        setLoading(false);
+      }
     },
   });
 

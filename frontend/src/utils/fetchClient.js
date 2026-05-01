@@ -1,7 +1,9 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
+import { Storage } from './storage';
+
 export async function fetchClient(endpoint, options = {}) {
-  const token = localStorage.getItem('crm_auth_token');
+  const token = Storage.getLocal('TOKEN') || Storage.getSession('TOKEN');
   
   const headers = {
     'Content-Type': 'application/json',
@@ -18,9 +20,13 @@ export async function fetchClient(endpoint, options = {}) {
     const response = await fetch(`${BASE_URL}${endpoint}`, config);
 
     if (response.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-      throw new Error('Unauthorized - Please log in again');
+      Storage.clearAll();
+      // Only redirect if we're not already on the login page to avoid infinite loops and hidden errors
+      if (!window.location.pathname.includes('/login')) {
+        window.location.href = '/login';
+      }
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || 'Unauthorized - Please log in again');
     }
 
     if (!response.ok) {

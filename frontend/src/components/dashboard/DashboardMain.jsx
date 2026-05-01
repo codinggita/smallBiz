@@ -3,8 +3,12 @@ import {
   FiSearch, FiBell, FiBriefcase, FiUsers, FiFileText, FiMessageCircle,
   FiTrendingUp, FiMoreHorizontal, FiCheckCircle, FiAlertCircle, FiClock
 } from 'react-icons/fi';
+import { Storage } from '../../utils/storage';
 
 const DashboardMain = () => {
+  const user = Storage.getLocal('USER') || Storage.getSession('USER') || {};
+  const userName = user.name ? user.name.split(' ')[0] : 'Ravi';
+
   return (
     <div className="flex-1 bg-[#F9FAFB] min-h-screen p-4 md:p-8 xl:mr-[280px]">
       
@@ -12,7 +16,7 @@ const DashboardMain = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-[#112D4E]">Dashboard</h1>
-          <p className="text-[#3F72AF] text-sm font-medium mt-1">Good morning, Ravi 👋</p>
+          <p className="text-[#3F72AF] text-sm font-medium mt-1">Good morning, {userName} 👋</p>
         </div>
         <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
           <div className="relative">
